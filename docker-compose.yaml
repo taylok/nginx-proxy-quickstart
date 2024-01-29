@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  api_gateway:
+    image: registry.access.redhat.com/ubi8/nginx-122
+    container_name: api_gateway
+    command: nginx -g "daemon off;"
+    ports:
+      - protocol: tcp
+        target: 80
+        published: 8881
+    environment:
+      NGINX_PORT: 80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
